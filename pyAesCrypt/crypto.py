@@ -163,16 +163,6 @@ def encryptStream(fIn, fOut, passw, bufferSize):
     # reserved byte (set to zero)
     fOut.write(b"\x00")
     
-    # setup "CREATED-BY" extension
-    cby = "pyAesCrypt " + version
-    
-    # write "CREATED-BY" extension length
-    fOut.write(b"\x00" + bytes([1+len("CREATED_BY"+cby)]))
-    
-    # write "CREATED-BY" extension
-    fOut.write(bytes("CREATED_BY", "utf8") + b"\x00" +
-               bytes(cby, "utf8"))
-    
     # write "container" extension length
     fOut.write(b"\x00\x80")
     
